@@ -63,17 +63,19 @@ README.Docker.md
 
 1. Open a terminal in the root directory of your project.
 
-2. Run the following command to build the Docker image using Docker Build Cloud: 
-   ```sh 
-   docker buildx build --builder your-dh-org/your-dh-org --tag your-dh-org/your-image-name:tag .
+2. Run the following command to build the Docker image using Docker Build Cloud:
+   ```sh
+   docker buildx build --builder your-dh-org/your-dh-org --tag your-dh-org/your-image-name:tag 
 
-3. Verify the images via docker desktop by navigating to images 
+
+3. Verify the images via docker desktop by navigate to docker desktop> click images 
 
 b. To verify via cli, Run the command via terminal:
    ```sh
    docker images
 
-Test Locally 
+
+Test Locally
 1. Run the container locally: 
    ```sh 
    docker compose up --build
@@ -86,7 +88,8 @@ b. Alternate command to run the container:
    ```sh 
    curl localhost:8080
 
-### Test Locally using Testcontainers
+Test Locally using Testcontainers
+
 1. Ensure you have Testcontainers set up in your project.
 
  
@@ -116,7 +119,7 @@ Secure using Docker Scout
    ```sh
    docker scout quickview your-dh-org/your-image-name:tag
 
-### Push to Docker Hub
+Push to Docker Hub
 1. Log in to Docker Hub if you haven't already:
 Run the following command: 
    ```sh 
