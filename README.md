@@ -91,12 +91,13 @@ Review the output and address any vulnerabilities found.
 
 # Push to Docker Hub
 1. Log in to Docker Hub if you haven't already:
-
+Run the following command: ```sh
 docker login
 
 2. Tag your Docker image for Docker Hub:
-docker tag your-image-name:tag your-dockerhub-username/your-image-name:tag
+```sh docker tag your-image-name:tag your-dockerhub-username/your-image-name:tag
 
 3. Push the Docker image to Docker Hub:
-docker push your-dockerhub-username/your-image-name:tag
+
+``` docker push your-dockerhub-username/your-image-name:tag
 
