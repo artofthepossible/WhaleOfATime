@@ -64,22 +64,27 @@ README.Docker.md
 1. Open a terminal in the root directory of your project.
 
 2. Run the following command to build the Docker image using Docker Build Cloud: 
-   ```sh docker buildx build --builder your-dh-org/your-dh-org --tag your-dh-org/your-image-name:tag .
+   ```sh 
+   docker buildx build --builder your-dh-org/your-dh-org --tag your-dh-org/your-image-name:tag .
 
 3. Verify the images via docker desktop by navigating to images 
 
-b. To verify via cli, Run the command via terminal: 
-   ```sh docker images
+b. To verify via cli, Run the command via terminal:
+   ```sh
+   docker images
 
-### Test Locally 
+Test Locally 
 1. Run the container locally: 
-   ```sh docker compose up --build
+   ```sh 
+   docker compose up --build
 
 b. Alternate command to run the container: 
-   ```sh docker run -p 8080:8080 spring-boot-app:1.0
+   ```sh 
+   docker run -p 8080:8080 spring-boot-app:1.0
 
 2. Access the application at http://localhost:8080
-   ```sh curl localhost:8080
+   ```sh 
+   curl localhost:8080
 
 ### Test Locally using Testcontainers
 1. Ensure you have Testcontainers set up in your project.
@@ -88,42 +93,78 @@ b. Alternate command to run the container:
 2. Write a test case using Testcontainers to spin up the Docker container and run your tests.
 
 a. Add Testcontainers dependencies to your project: 
-   ```sh placeholder for pom.xml dependencies
+   ```sh 
+   placeholder for pom.xml dependencies
 
 b. Write a Testcontainer-based integration test: 
-   ```sh placeholder for code
+   ```sh 
+   placeholder for code
 
 3. Run your tests using your preferred test framework, for example: 
-   ```sh ./gradlew test or  sh mvn test
+   ```sh 
+   ./gradlew test or  sh mvn test
 
 
-### Secure using Docker Scout
+Secure using Docker Scout
 1. Run the following command to scan your Docker image for vulnerabilities using Docker Scout: 
-   ```sh docker scout cves your-dh-org/your-image-name:tag
+   ```sh
+   docker scout cves your-dh-org/your-image-name:tag
 
 2. Review the output and address any vulnerabilities found.
 
 3. Run the following command to analyze your image CVE using quickview: 
-   ```sh docker scout quickview your-dh-org/your-image-name:tag
+   ```sh
+   docker scout quickview your-dh-org/your-image-name:tag
 
 ### Push to Docker Hub
 1. Log in to Docker Hub if you haven't already:
 Run the following command: 
-   ```sh docker login
+   ```sh 
+   docker login
 
 2. Tag your Docker image for Docker Hub: 
-   ```sh docker tag your-image-name:tag your-dockerhub-username/your-image-name:tag
+   ```sh
+   docker tag your-image-name:tag your-dockerhub-username/your-image-name:tag
 
 3. Push the Docker image to Docker Hub:
-   ```sh docker push your-dockerhub-username/your-image-name:tag
+   ```sh 
+   docker push your-dockerhub-username/your-image-name:tag
 
 ### Create Helm charts and inser
 1. Within the 
-   ```sh 
+   ```sh
+   placeholder insert some helm charts samples
 
-### Start local kubernetes via docker desktop
+# Start Kubernetes on Docker Desktop
 
-### Using Deploy app to local k8 cluster using
+1. **Open Docker Desktop**:
+   - Launch Docker Desktop from your applications menu.
+
+2. **Enable Kubernetes**:
+   - Click on the gear icon (⚙️) in the top-right corner to open the settings.
+   - In the settings menu, navigate to the "Kubernetes" tab.
+   - Check the box labeled "Enable Kubernetes".
+   - Click "Apply & Restart" to apply the changes and restart Docker Desktop.
+
+3. **Wait for Kubernetes to Start**:
+   - Docker Desktop will take a few minutes to start Kubernetes. You can monitor the progress in the Docker Desktop status bar.
+   - Once Kubernetes is running, you will see a green light next to "Kubernetes" in the Docker Desktop settings.
+
+4. **Verify Kubernetes is Running**:
+   - Open a terminal and run the following command to check the status of Kubernetes:
+     ```sh
+     kubectl get nodes
+     ```
+   - You should see a list of nodes indicating that Kubernetes is up and running.
+
+5. **Deploy an Application to Kubernetes**:
+   - You can now deploy your applications to the local Kubernetes cluster using `kubectl` commands or Kubernetes manifests.
+
+Example:
+```sh
+kubectl apply -f your-kubernetes-manifest.yaml
+
+Note: Replace your-kubernetes-manifest.yaml with the path to your Kubernetes manifest file. ```
 
  ### Workshop Deliverables
  . Completed Dockerfile, Compose, Ignore and Readme Files
