@@ -63,19 +63,23 @@ README.Docker.md
 
 1. Open a terminal in the root directory of your project.
 
-2. Run the following command to build the Docker image using Docker Build Cloud: ```sh docker buildx build --builder your-dh-org/your-dh-org --tag your-dh-org/your-image-name:tag .
+2. Run the following command to build the Docker image using Docker Build Cloud: 
+   ```sh docker buildx build --builder your-dh-org/your-dh-org --tag your-dh-org/your-image-name:tag .
 
 3. Verify the images via docker desktop by navigating to images 
 
-b. To verify via cli, Run the command via terminal: ``` sh docker images
+b. To verify via cli, Run the command via terminal: 
+   ```sh docker images
 
 ### Test Locally 
-1. Run the container locally: ``` sh  docker compose up --build
+1. Run the container locally: 
+   ```sh docker compose up --build
 
-b. Alternate command to run the container: ``` sh docker run -p 8080:8080 spring-boot-app:1.0
+b. Alternate command to run the container: 
+   ```sh docker run -p 8080:8080 spring-boot-app:1.0
 
 2. Access the application at http://localhost:8080
-
+   ```sh curl localhost:8080
 
 ### Test Locally using Testcontainers
 1. Ensure you have Testcontainers set up in your project.
@@ -83,31 +87,41 @@ b. Alternate command to run the container: ``` sh docker run -p 8080:8080 spring
  
 2. Write a test case using Testcontainers to spin up the Docker container and run your tests.
 
-a. Add Testcontainers dependencies to your project: ``` sh placeholder for pom.xml dependencies
+a. Add Testcontainers dependencies to your project: 
+   ```sh placeholder for pom.xml dependencies
 
-b. Write a Testcontainer-based integration test: ``` sh placeholder for code
+b. Write a Testcontainer-based integration test: 
+   ```sh placeholder for code
 
-3. Run your tests using your preferred test framework, for example: ``` sh ./gradlew test or  sh mvn test
+3. Run your tests using your preferred test framework, for example: 
+   ```sh ./gradlew test or  sh mvn test
 
 
 ### Secure using Docker Scout
-1. Run the following command to scan your Docker image for vulnerabilities using Docker Scout: ``` sh docker scout cves your-dh-org/your-image-name:tag
+1. Run the following command to scan your Docker image for vulnerabilities using Docker Scout: 
+   ```sh docker scout cves your-dh-org/your-image-name:tag
 
 2. Review the output and address any vulnerabilities found.
 
-3. Run the following command to analyze your image CVE using quickview: ``` sh docker scout quickview your-dh-org/your-image-name:tag
+3. Run the following command to analyze your image CVE using quickview: 
+   ```sh docker scout quickview your-dh-org/your-image-name:tag
 
 ### Push to Docker Hub
 1. Log in to Docker Hub if you haven't already:
-Run the following command: ```sh
-docker login
+Run the following command: 
+   ```sh docker login
 
-2. Tag your Docker image for Docker Hub: ```sh docker tag your-image-name:tag your-dockerhub-username/your-image-name:tag
+2. Tag your Docker image for Docker Hub: 
+   ```sh docker tag your-image-name:tag your-dockerhub-username/your-image-name:tag
 
-3. Push the Docker image to Docker Hub:``` sh docker push your-dockerhub-username/your-image-name:tag
+3. Push the Docker image to Docker Hub:
+   ```sh docker push your-dockerhub-username/your-image-name:tag
 
-### Create Helm chart
+### Create Helm charts and inser
 1. Within the 
+   ```sh 
+
+### Start local kubernetes via docker desktop
 
 ### Using Deploy app to local k8 cluster using
 
