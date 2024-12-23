@@ -81,6 +81,8 @@ b. To verify via cli, Run the command via terminal:
    docker images 
 
 
+
+
 Base Images
 Discussion:
 Spend time reviewing images built (size and packages).
@@ -141,6 +143,8 @@ Example build command with `--sbom=true` and `--provenance=true`:
    ```sh
    docker build -t demonstrationorg/workshop-prep-demo-alpaquita:v1.0 --sbom=true --provenance=true .
 
+
+
 This command specifies the use of the faster builder Docker build cloud: cloud-demonstrationorg-default builder and includes the --sbom and --provenance flags for generating SBOM and provenance information.
 
    docker buildx build --builder cloud-demonstrationorg-default --sbom=true --provenance=true -t demonstrationorg/workshop-prep-demo-alpaquita:v1.0 .
@@ -154,13 +158,19 @@ Test Locally
    ```sh 
    docker compose up --build
 
+
+
 b. Alternate command to run the container: 
    ```sh 
    docker run -p 8080:8080 spring-boot-app:1.0
 
+
+
 2. Access the application at http://localhost:8080
    ```sh 
    curl localhost:8080
+
+
 
 Test Locally using Testcontainers
 
@@ -173,13 +183,19 @@ a. Add Testcontainers dependencies to your project:
    ```sh 
    placeholder for pom.xml dependencies
 
+
+
 b. Write a Testcontainer-based integration test: 
    ```sh 
    placeholder for code
 
+
+
 3. Run your tests using your preferred test framework, for example: 
    ```sh 
    ./gradlew test or  sh mvn test
+
+
 
 
 Secure using Docker Scout
@@ -187,9 +203,13 @@ Secure using Docker Scout
    ```sh
    docker scout cves your-dh-org/your-image-name:tag
 
+
+
    ```sh
    docker scout cves demonstrationorg/workshop-prep-demo-alpaquita:v1.0
    
+
+
 
 2. Review the output and address any vulnerabilities found.
 
@@ -197,7 +217,11 @@ Secure using Docker Scout
    ```sh
    docker scout quickview your-dh-org/your-image-name:tag
 
+
+
    docker scout quickview demonstrationorg/workshop-prep-demo-alpaquita:v1.0
+
+
 
 Additional Docker Scout Commands
 What's next:
@@ -213,15 +237,21 @@ Run the following command:
    ```sh 
    docker login
 
+
+
 2. Tag your Docker image for Docker Hub: 
    ```sh
    docker tag your-image-name:tag your-dockerhub-username/your-image-name:tag
    docker tag demonstrationorg/workshop-prep-demo-alpaquita:v1.0
 
+
+
 3. Push the Docker image to Docker Hub:
    ```sh 
    docker push your-dockerhub-username/your-image-name:tag
    docker push demonstrationorg/workshop-prep-demo-alpaquita:v1.0
+
+
 
 # Review Docker Scout Health Score on Docker Hub
 Find Your Repository:
@@ -265,6 +295,8 @@ Return to Docker Hub and review the updated Docker Scout health score to see the
    ```sh
    helm create spring-boot-app
 
+
+
 This command will generate the following files:
    ```sh
    spring-boot-app/
@@ -274,7 +306,9 @@ This command will generate the following files:
 ├── charts/       # Charts that this chart depends on
 └── templates/    # The template files
     └── tests/    # The test files
-    
+   
+
+ 
 1. Using the enhanced helm chart for the app deploy the app to the local k8 cluster
 
 ### Using Deploy app to local k8 cluster using
@@ -302,6 +336,8 @@ Steps to deploy your Spring Boot application to a local kind cluster using the p
      ```
    - You should see a list of nodes indicating that Kubernetes is up and running.
 
+
+
 5. Deploy an Application to Kubernetes:
    - You can now deploy your applications to the local Kubernetes cluster using `kubectl` commands or Kubernetes manifests.
 
@@ -310,6 +346,8 @@ Example:
 kubectl apply -f your-kubernetes-manifest.yaml
 
 Note: Replace your-kubernetes-manifest.yaml with the path to your Kubernetes manifest file. ```
+
+
 
 Using KIND with Docker Desktop 
 Steps to deploy your Spring Boot application to a local kind cluster using the provided Helm charts.
@@ -321,6 +359,8 @@ Configure kubectl to Use the kind Cluster:
 Kubernetes control plane is running at https://127.0.0.1:59872
 CoreDNS is running at https://127.0.0.1:59872/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 
+
+
 Navigate to the Helm Chart Directory:
 
 Change directory to the Helm chart location:
@@ -331,6 +371,8 @@ Use Helm to deploy the application:
 
 ```sh
 helm install spring-boot-app .
+
+
 
 
 NAME: spring-boot-app
@@ -350,14 +392,20 @@ Check the Helm Release: Verify that the Helm release is deployed successfully.
 ```sh
 helm list
 
+
+
 Check the status of the deployment:
 ```sh
 kubectl get pods
+
+
 
 Check the Pods: Ensure that the pods are running.
 
 ```sh
 kubectl get services
+
+
 
 Check the Logs: View the logs of the application pod to ensure it is running correctly.
 
@@ -365,11 +413,15 @@ Check the Logs: View the logs of the application pod to ensure it is running cor
 kubectl logs <pod-name>
 
 
+
+
 Access the Application:
 Forward a local port to the service to access the application:
 
 ```sh
 kubectl port-forward svc/spring-boot-app 8080:80
+
+
 
 Forward a local port to the service to access the application:
 kubectl port-forward svc/spring-boot-app 8080:80
@@ -427,12 +479,16 @@ image:
   repository: your-dockerhub-username/your-image-name
   tag: tag
 
+
+
 Check Image Availability:
 
 Verify that the image is available in the Docker registry:
 
 ```sh
 docker pull your-dockerhub-username/your-image-name:tag
+
+
 
 Authenticate Docker Registry:
 
