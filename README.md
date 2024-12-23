@@ -38,7 +38,7 @@ docker scout --version
 5. Ensure the GitHub CLI (gh) is installed and accessible.
 gh --version
 
-### WORKSHOP: Step-By-Step Guide: Containerize ad Spring Boot Application
+# WORKSHOP: Step-By-Step Guide: Containerize ad Spring Boot Application
 Note! 
 
 Replace `your-image-name`, `tag`, and `your-dockerhub-username` with your actual image name, tag, and Docker Hub username.
@@ -60,7 +60,7 @@ README.Docker.md
 2. Review and customize the generated files as needed for your project.
 
 
- # Build the Docker Image with Docker Build Cloud
+# Build the Docker Image with Docker Build Cloud
 
 1. Open a terminal in the root directory of your project.
 
@@ -71,7 +71,7 @@ README.Docker.md
    docker buildx build --builder cloud-demonstrationorg-default demonstrationorg/workshop-prep-demo-alpaquita:v1.0 
 
    docker build -t demonstrationorg/workshop-prep-demo-alpaquita:v1.0 .
-
+   ```
 
 3. Verify the images via docker desktop by navigate to docker desktop> click images 
 
@@ -79,17 +79,19 @@ README.Docker.md
 4. To verify via cli, Run the command via terminal:
    ```sh
    docker images
-
+   ```
 
 5. Base Images
 Discussion:
 Spend time reviewing images built (size and packages).
 Existing base image
+```sh
 FROM eclipse-temurin:21-jre-jammy 
-
+```
 6. 7. What happens if you switch the base image to something like this:
+```sh
 FROM bellsoft/liberica-native-image-kit-container
-
+```
 8. What other ways can we optimzie the base images and packages
 
 9. Using docker desktop and reviewing the base image how does the size and number of packages shift?
@@ -145,14 +147,14 @@ Size: 981.07 MB: 197 packages and 0 Critical and High CVEs
 
    ```sh
    docker build -t demonstrationorg/workshop-prep-demo-alpaquita:v1.0 --sbom=true --provenance=true .
+   ```
 
 
-
-This command specifies the use of the faster builder Docker build cloud: cloud-demonstrationorg-default builder and includes the --sbom and --provenance flags for generating SBOM and provenance information.
+11. This command specifies the use of the faster builder Docker build cloud: cloud-demonstrationorg-default builder and includes the --sbom and --provenance flags for generating SBOM and provenance information.
 
    docker buildx build --builder cloud-demonstrationorg-default --sbom=true --provenance=true -t demonstrationorg/workshop-prep-demo-alpaquita:v1.0 .
 
-Walkthrough of Build Timing:
+12. Walkthrough of Build Timing:
    - In the "History" section, you can see the timing for each step of the build process. This helps you identify which steps took the longest and whether they were cached or not.
    - Cached steps are typically faster because Docker reuses the existing layers instead of rebuilding them from scratch.
 
@@ -160,19 +162,19 @@ Walkthrough of Build Timing:
 1. Run the container locally: 
    ```sh 
    docker compose up --build
-
+   ```
 
 
 b. Alternate command to run the container: 
    ```sh 
    docker run -p 8080:8080 spring-boot-app:1.0
-
+   ```
 
 
 2. Access the application at http://localhost:8080
    ```sh 
    curl localhost:8080
-
+   ```
 
 
 # Test Locally using Testcontainers
@@ -185,31 +187,30 @@ b. Alternate command to run the container:
 a. Add Testcontainers dependencies to your project: 
    ```sh 
    placeholder for pom.xml dependencies
-
+   ```
 
 
 b. Write a Testcontainer-based integration test: 
    ```sh 
    placeholder for code
-
+   ```
 
 
 3. Run your tests using your preferred test framework, for example: 
    ```sh 
-   ./gradlew test or  sh mvn test
+   ./gradlew test or mvn test
+   ```
 
-
-
-
-Secure using Docker Scout
+# Secure using Docker Scout
 1. Run the following command to scan your Docker image for vulnerabilities using Docker Scout: 
    ```sh
    docker scout cves your-dh-org/your-image-name:tag
-
+   ```
 
 
    ```sh
    docker scout cves demonstrationorg/workshop-prep-demo-alpaquita:v1.0
+   ```
    
 
 
@@ -219,41 +220,48 @@ Secure using Docker Scout
 3. Run the following command to analyze your image CVE using quickview: 
    ```sh
    docker scout quickview your-dh-org/your-image-name:tag
+   ```
 
-
-
+  ```sh
    docker scout quickview demonstrationorg/workshop-prep-demo-alpaquita:v1.0
-
+  ```
 
 
 Additional Docker Scout Commands
 What's next:
-    View vulnerabilities → docker scout cves demonstrationorg/workshop-prep-demo-alpaquita:v1.0
+    View vulnerabilities → 
+    ```sh
+    docker scout cves demonstrationorg/workshop-prep-demo-alpaquita:v1.0
+   ```
 
-    View base image update recommendations → docker scout recommendations demonstrationorg/workshop-prep-demo-alpaquita:v1.0
-
-    Include policy results in your quickview by supplying an organization → docker scout quickview demonstrationorg/workshop-prep-demo-alpaquita:v1.0 --org <organization>
+    View base image update recommendations → 
+    ```sh
+    docker scout recommendations demonstrationorg/workshop-prep-demo-alpaquita:v1.0
+   ```
+    Include policy results in your quickview by supplying an organization → 
+   ```sh docker scout quickview demonstrationorg/workshop-prep-demo-alpaquita:v1.0 --org <organization>
+   ```
 
 Push to Docker Hub
 1. Log in to Docker Hub if you haven't already:
 Run the following command: 
    ```sh 
    docker login
-
+   ```
 
 
 2. Tag your Docker image for Docker Hub: 
    ```sh
    docker tag your-image-name:tag your-dockerhub-username/your-image-name:tag
    docker tag demonstrationorg/workshop-prep-demo-alpaquita:v1.0
-
+   ```
 
 
 3. Push the Docker image to Docker Hub:
    ```sh 
    docker push your-dockerhub-username/your-image-name:tag
    docker push demonstrationorg/workshop-prep-demo-alpaquita:v1.0
-
+   ```
 
 
 # Review Docker Scout Health Score on Docker Hub
@@ -283,10 +291,13 @@ Find Your Repository:
 8. Rebuild and Push the Enhanced Image:
 After making the necessary improvements, rebuild your Docker image:
 
-   ```docker buildx build --builder your-dbc-builder --sbom=true --provenance=true -t your-dockerhub-username/your-image-name:tag .
-
+   ```sh
+   docker buildx build --builder your-dbc-builder --sbom=true --provenance=true -t your-dockerhub-username/your-image-name:tag .
+   ```
 Push the enhanced image to Docker Hub:
-   ```docker push your-dockerhub-username/your-image-name:tag
+   ```sh
+   docker push your-dockerhub-username/your-image-name:tag
+   ```
 Review the Updated Health Score:
 
 Return to Docker Hub and review the updated Docker Scout health score to see the improvements.
@@ -297,7 +308,7 @@ Return to Docker Hub and review the updated Docker Scout health score to see the
 
    ```sh
    helm create spring-boot-app
-
+   ```
 
 
 This command will generate the following files:
@@ -309,7 +320,7 @@ This command will generate the following files:
 ├── charts/       # Charts that this chart depends on
 └── templates/    # The template files
     └── tests/    # The test files
-   
+   ```
 
  
 1. Using the enhanced helm chart for the app deploy the app to the local k8 cluster
@@ -347,6 +358,7 @@ Steps to deploy your Spring Boot application to a local kind cluster using the p
 Example:
 ```sh
 kubectl apply -f your-kubernetes-manifest.yaml
+```
 
 Note: Replace your-kubernetes-manifest.yaml with the path to your Kubernetes manifest file. ```
 
@@ -361,7 +373,7 @@ Configure kubectl to Use the kind Cluster:
 ```sh kubectl cluster-info --context docker-desktop
 Kubernetes control plane is running at https://127.0.0.1:59872
 CoreDNS is running at https://127.0.0.1:59872/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
-
+```
 
 
 Navigate to the Helm Chart Directory:
@@ -374,7 +386,7 @@ Use Helm to deploy the application:
 
 ```sh
 helm install spring-boot-app .
-
+```
 
 
 
@@ -394,27 +406,27 @@ Verify the Deployment:
 Check the Helm Release: Verify that the Helm release is deployed successfully.
 ```sh
 helm list
-
+```
 
 
 Check the status of the deployment:
 ```sh
 kubectl get pods
-
+```
 
 
 Check the Pods: Ensure that the pods are running.
 
 ```sh
 kubectl get services
-
+```
 
 
 Check the Logs: View the logs of the application pod to ensure it is running correctly.
 
 ```sh
 kubectl logs <pod-name>
-
+```
 
 
 
@@ -423,13 +435,16 @@ Forward a local port to the service to access the application:
 
 ```sh
 kubectl port-forward svc/spring-boot-app 8080:80
-
+```
 
 
 Forward a local port to the service to access the application:
 kubectl port-forward svc/spring-boot-app 8080:80
 
 Open your browser and navigate to http://localhost:8080 to access the Spring Boot application.
+
+By following these steps, you should have used helm to deploy an application to a local kind cluster and be able to curl the endpoint.
+
 
  ### Workshop Deliverables
  . Completed Dockerfile, Compose, Ignore and Readme Files
@@ -439,17 +454,17 @@ Open your browser and navigate to http://localhost:8080 to access the Spring Boo
  
 
  
-###Common Errors
+# Common Errors
 InvalidImageName
 
-Workarounds
-##
+###Workarounds
+
 Redeploy the Application:
 
 After updating the image name, redeploy the application using Helm:
 
 helm upgrade --install spring-boot-app .
-
+```
 Check the Pod Status:
 
 Verify the status of the pods to ensure they are running:
@@ -460,8 +475,9 @@ Check the Logs Again:
 Once the pods are running, check the logs again:
 
 kubectl logs spring-boot-app-5598c996f-rnpt7
+```
 
-## Troubleshooting Image Pull Errors
+### Troubleshooting Image Pull Errors
 
 spring-boot-app-5955589b69-rn85w   0/1     ImagePullBackOff   0          16s
 
@@ -471,8 +487,8 @@ If you encounter an `ErrImagePull` or `ImagePullBackOff` error, follow these ste
 spring-boot-app-5955589b69-rn85w   0/1     ErrImagePull   0          65s
 The error ErrImagePull and ImagePullBackOff indicates that Kubernetes is trying and failing to pull the specified Docker image. This usually happens due to an incorrect image name, tag, or lack of access to the Docker registry.
 
-Workarounds
-Verify Image Name and Tag:
+### Workarounds
+### Verify Image Name and Tag:
 
 Ensure the image name and tag specified in the deployment are correct.
 
@@ -481,64 +497,70 @@ Example:
 image:
   repository: your-dockerhub-username/your-image-name
   tag: tag
+```
 
 
-
-Check Image Availability:
+### Check Image Availability:
 
 Verify that the image is available in the Docker registry:
 
 ```sh
 docker pull your-dockerhub-username/your-image-name:tag
+```
 
 
-
-Authenticate Docker Registry:
+### Authenticate Docker Registry:
 
 Ensure that the Kubernetes cluster has access to the Docker registry. If the image is private, create a Kubernetes secret for Docker registry authentication:
 
+```sh
 kubectl create secret docker-registry regcred \
   --docker-server=https://index.docker.io/v1/ \
   --docker-username=your-dockerhub-username \
   --docker-password=your-dockerhub-password \
   --docker-email=your-email@example.com
+```
 
-  Update Deployment to Use the Secret:
+### Update Deployment to Use the Secret:
 
 Update the deployment to use the created secret:
-
+```markdown
 spec:
   containers:
     - name: spring-boot-app
       image: your-dockerhub-username/your-image-name:tag
   imagePullSecrets:
     - name: regcred
+```
 
-    Redeploy the Application:
+### Redeploy the Application:
 
 Redeploy the application using Helm:
 
+```sh
 helm upgrade --install spring-boot-app .
-
+```
 Verify Pod Status:
 
 Check the status of the pods to ensure they are running:
-
+```sh
 kubectl get pods
+```
 
 Check Logs:
 
 Once the pods are running, check the logs to ensure the application is starting correctly:
 
+```sh
 kubectl logs spring-boot-app-5955589b69-rn85w
-
+```
 CrashLoopBackOff
 spring-boot-app-754b5d687f-68tp6   0/1     CrashLoopBackOff   3 (18s ago)   64s
 
 Check Resource Limits:
 
 Verify that the resource limits specified in the Helm chart values file or Kubernetes deployment YAML file are appropriate for the application:
-
+```markdown
 resources:
   limits:
     cpu: "500m"
@@ -546,9 +568,10 @@ resources:
   requests:
     cpu: "250m"
     memory: "256Mi"
-
+```
 Check Liveness and Readiness Probes: Ensure that the liveness and readiness probes are correctly configured. Misconfigured probes can cause the pod to be killed and restarted.
 
+```markdown
 livenessProbe:
   httpGet:
     path: /
@@ -562,15 +585,17 @@ readinessProbe:
     port: http
   initialDelaySeconds: 30
   periodSeconds: 10
-
+```
 
 Check for Application-Specific Issues: If the application requires specific environment variables, configuration files, or dependencies, ensure they are correctly set up in the Helm chart.
 
 Check Kubernetes Events:
 
+```sh
 kubectl get events
-
+```
 Error:  bind: address already in use]
-
+```sh
 lsof -i :port
 kill -9 port
+```
