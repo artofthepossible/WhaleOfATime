@@ -81,8 +81,6 @@ b. To verify via cli, Run the command via terminal:
    docker images 
 
 
-
-
 Base Images
 Discussion:
 Spend time reviewing images built (size and packages).
