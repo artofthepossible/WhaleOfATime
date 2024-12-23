@@ -14,7 +14,7 @@ Unboxing Docker Desktop, DockerScout, Docker Build Cloud, Docker Scout and Testc
 # Before the workshop
 1. Setup docker desktop 4.36
 2. Gain access to docker hub organization for workshop {insert org name}
-3. Gain access to docker hub (workshop buildaer)
+3. Gain access to docker hub (workshop builder)
 4. Enable access to to docker scout (workshop repo)
 5. Gain access to to Testcontainers organization (workshop repo)
 6. Enable access to github
@@ -22,6 +22,7 @@ Unboxing Docker Desktop, DockerScout, Docker Build Cloud, Docker Scout and Testc
 8. Docker Hub Account
 9. Enable [docker extension for copilot](https://docs.docker.com/copilot/) 
 10. Setup up helm: brew install helm
+11. Setup Kompose
 
 # Setting up the Environment (15 minutes)
 1: git clone https://github.com/artofthepossible/WhaleOfATime
@@ -38,11 +39,17 @@ docker scout --version
 5. Ensure the GitHub CLI (gh) is installed and accessible.
 gh --version
 
-# WORKSHOP: Step-By-Step Guide: Containerize ad Spring Boot Application
+6. Ensure the Kompose is installed and accessible.
+kompose version
+
+7. Ensure the Kompose is installed and accessible.
+helm version
+
+# WORKSHOP: Step-By-Step Guide: Containerize a Spring Boot Application
 Note! 
 
-Replace `your-image-name`, `tag`, and `your-dockerhub-username` with your actual image name, tag, and Docker Hub username.
-Replace `your-image-name`, `tag`, and `your-dockerhub-username` with your actual image name, tag, and Docker Hub username.
+Replace `your-image-name`, `tag`, and `your-dockerhub-username` with your actual image name, tag, and Docker Hub username.<br>
+Replace `your-image-name`, `tag`, and `your-dockerhub-username` with your actual image name, tag, and Docker Hub username.<br>
 
 # Using Docker Init to Create the Docker Assets
 
@@ -67,9 +74,12 @@ README.Docker.md
 2. Run the following command to build the Docker image using Docker Build Cloud:
    ```sh
    docker buildx build --builder your-dbc-builder your-dh-org/your-image-name:tag 
-
+   ```
+    ```sh
    docker buildx build --builder cloud-demonstrationorg-default demonstrationorg/workshop-prep-demo-alpaquita:v1.0 
+   ```
 
+    ```sh
    docker build -t demonstrationorg/workshop-prep-demo-alpaquita:v1.0 .
    ```
 
@@ -152,7 +162,9 @@ Size: 981.07 MB: 197 packages and 0 Critical and High CVEs
 
 11. This command specifies the use of the faster builder Docker build cloud: cloud-demonstrationorg-default builder and includes the --sbom and --provenance flags for generating SBOM and provenance information.
 
+ ```sh
    docker buildx build --builder cloud-demonstrationorg-default --sbom=true --provenance=true -t demonstrationorg/workshop-prep-demo-alpaquita:v1.0 .
+```
 
 12. Walkthrough of Build Timing:
    - In the "History" section, you can see the timing for each step of the build process. This helps you identify which steps took the longest and whether they were cached or not.
