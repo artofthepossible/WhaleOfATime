@@ -87,13 +87,14 @@ Spend time reviewing images built (size and packages).
 Existing base image
 FROM eclipse-temurin:21-jre-jammy 
 
-What happens if you switch the base image to something like this:
+6. 7. What happens if you switch the base image to something like this:
 FROM bellsoft/liberica-native-image-kit-container
 
-What other ways can we optimzie the base images and packages
+8. What other ways can we optimzie the base images and packages
 
-Using docker desktop and reviewing the base image how does the size and number of packages shift?
-Which base images results in less vulnerabilities?
+9. Using docker desktop and reviewing the base image how does the size and number of packages shift?
+
+10. Which base images results in less vulnerabilities?
 
 Temurin - eclipse-temurin:21-jdk-jammy: 
 Size: 413.95 MB: 221 packages and 0 Critical and High CVEs 
@@ -140,7 +141,8 @@ Size: 981.07 MB: 197 packages and 0 Critical and High CVEs
    - `--sbom=true` generates a Software Bill of Materials (SBOM) that lists all the components and dependencies included in the image.
    - `--provenance=true` adds provenance information, which provides details about the build environment and process, ensuring the integrity and authenticity of the image.
 
-Example build command with `--sbom=true` and `--provenance=true`:
+10. Example build command with `--sbom=true` and `--provenance=true`:
+
    ```sh
    docker build -t demonstrationorg/workshop-prep-demo-alpaquita:v1.0 --sbom=true --provenance=true .
 
@@ -154,7 +156,7 @@ Walkthrough of Build Timing:
    - In the "History" section, you can see the timing for each step of the build process. This helps you identify which steps took the longest and whether they were cached or not.
    - Cached steps are typically faster because Docker reuses the existing layers instead of rebuilding them from scratch.
 
-Test Locally
+# Test Locally
 1. Run the container locally: 
    ```sh 
    docker compose up --build
@@ -173,7 +175,7 @@ b. Alternate command to run the container:
 
 
 
-Test Locally using Testcontainers
+# Test Locally using Testcontainers
 
 1. Ensure you have Testcontainers set up in your project.
 
