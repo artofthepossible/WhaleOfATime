@@ -75,13 +75,13 @@ README.Docker.md
 
 3. Verify the images via docker desktop by navigate to docker desktop> click images 
 
-b. To verify via cli, Run the command via terminal:
+
+4. To verify via cli, Run the command via terminal:
    ```sh
    docker images
 
-Verify the images via docker desktop by navigate to docker desktop> click images
 
-c. Base Images
+5. Base Images
 Discussion:
 Spend time reviewing images built (size and packages).
 Existing base image
