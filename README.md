@@ -73,15 +73,15 @@ README.Docker.md
    docker build -t demonstrationorg/workshop-prep-demo-alpaquita:v1.0 .
 
 
-
 3. Verify the images via docker desktop by navigate to docker desktop> click images 
 
 b. To verify via cli, Run the command via terminal:
    ```sh
-   docker images 
+   docker images
 
+Verify the images via docker desktop by navigate to docker desktop> click images
 
-Base Images
+c. Base Images
 Discussion:
 Spend time reviewing images built (size and packages).
 Existing base image
@@ -89,9 +89,12 @@ FROM eclipse-temurin:21-jre-jammy
 
 What happens if you switch the base image to something like this:
 FROM bellsoft/liberica-native-image-kit-container
- What other ways can we optimzie the base images and packages
+
+What other ways can we optimzie the base images and packages
+
 Using docker desktop and reviewing the base image how does the size and number of packages shift?
 Which base images results in less vulnerabilities?
+
 Temurin - eclipse-temurin:21-jdk-jammy: 
 Size: 413.95 MB: 221 packages and 0 Critical and High CVEs 
 
