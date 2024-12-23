@@ -464,7 +464,8 @@ By following these steps, you should have used helm to deploy an application to 
  . Testcontainers based integration test
  . Access to workship Github repo for reference
  
-
+![FrontEnd](https://github.com/artofthepossible/WhaleOfATime/blob/main/images/frontend-service.png)
+![Olama](https://github.com/artofthepossible/WhaleOfATime/blob/main/images/ollama-service.png)
  
 # Common Errors
 InvalidImageName
