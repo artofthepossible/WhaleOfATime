@@ -5,9 +5,9 @@ Unboxing Docker Desktop, DockerScout, Docker Build Cloud, Docker Scout and Testc
 
 ## Workshop Objectives:
 1. Understand the basics of containerization and its advantages
-2. Learn how to containerize a Sprint boot application using docker desktop
-3. Explore the Docker ecosystem (Docker Desktopm Docker Hub, Docker Build Cloud, Docker Scout, Testcontainers)
-4. Implement containerization best pracitces for a production-ready Spring Boot Application
+2. Learn how to containerize a Spring boot application using docker desktop
+3. Explore the Docker ecosystem (Docker Desktop Docker Hub, Docker Build Cloud, Docker Scout, Testcontainers)
+4. Implement containerization best practices for a production-ready Spring Boot Application
 
 ## Workshop Agenda:
 
@@ -65,6 +65,43 @@ compose.yaml
 README.Docker.md
 
 2. Review and customize the generated files as needed for your project.
+
+3. Creates Docker-related starter files for your project
+Supplies .dockerignore, Dockerfile, and compose.yaml files
+
+4. Follow prompts
+
+```sh
+What application platform does your project use? 
+Java
+```
+
+```sh
+What’s the relative directory (with a leading .) for your app? ./src
+```
+
+```sh
+What version of Java do you want to use? 21
+```
+
+```sh
+What port does your server listen on? 8080
+```
+
+Start your application → 
+```sh
+$ docker compose up -build
+```
+
+Your application will be available at 
+```sh
+http://localhost:8080
+```
+
+Stop your application → 
+```sh
+$ docker compose down
+```
 
 
 # Build the Docker Image with Docker Build Cloud
